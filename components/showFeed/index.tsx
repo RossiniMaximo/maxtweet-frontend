@@ -7,7 +7,7 @@ import { Spinner } from "components/spinner";
 
 export function ShowFeed() {
   const [isLoading, setIsLoading] = useState(false);
-  const me = useUser();
+  const { me } = useUser();
   const { data } = useUserFeed() as any;
   if (!data) {
     return (

@@ -7,7 +7,7 @@ import { updateUser } from "lib/api/user";
 import { useRouter } from "next/router";
 
 export function EditUser() {
-  const me = useUser();
+  const { me } = useUser();
   const [isCover, setIsCover] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
   const [profilePic, setProfilePic] = useState("");
