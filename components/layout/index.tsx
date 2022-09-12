@@ -29,6 +29,7 @@ export function Layout({ children }) {
               src={me?.pics.profilePicture}
               layout="fill"
               className={styles.image}
+              alt=""
             />
           </div>
           <div className={styles.user_name_container}>

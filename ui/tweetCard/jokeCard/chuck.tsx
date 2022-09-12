@@ -8,7 +8,7 @@ export function ChuckNorrisCard(props) {
     <div className={styles.main_container}>
       <div className={styles.top_content__container}>
         <div className={styles.img_container}>
-          <Image src={norrisImg} className={styles.img} layout="fill"></Image>
+          <Image src={norrisImg} className={styles.img} alt="" layout="fill"></Image>
         </div>
         <h4 className={styles.joke_title}>{props.jokeTitle}</h4>
       </div>

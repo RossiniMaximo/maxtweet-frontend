@@ -21,6 +21,7 @@ export function UserCard(props: UserCard) {
           src={props.img || mockProfileImg}
           layout="fill"
           className={styles.img}
+          alt=""
         ></Image>
       </div>
       <div className={styles.text_container}>

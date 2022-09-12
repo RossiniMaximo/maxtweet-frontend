@@ -1,7 +1,7 @@
 import { handleDeleteTweetAction, handleTweetAction } from "./api/user";
 
 const DEV_URL = "http://localhost:5500/api";
-const PROD_URL = process.env.NEXT_PUBLIC_DATABASE_URL;
+const PROD_URL = process.env.NEXT_PUBLIC_DATABASE_URL || "";
 
 export async function fetchAPI(input: RequestInfo, init?: RequestInit | {}) {
   const token = getAuthToken();

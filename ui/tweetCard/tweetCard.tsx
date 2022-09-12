@@ -92,6 +92,7 @@ export function TweetCard(props: TweetCardProps) {
               src={props.profilePicture}
               className={styles.img}
               layout="fill"
+              alt=""
             />
           </Link>
         </div>

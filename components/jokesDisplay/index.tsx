@@ -29,12 +29,6 @@ export function JokesDisplay({ query }) {
       setCharacter("Chuck Norris");
       setContent(jokes);
     }
-    if (query == " Dad Jokes") {
-      const jokes = await getRandomDadJoke();
-
-      setContent(jokes);
-      setCharacter("Dad Joke");
-    }
     if (query == " Dev Jokes") {
       const jokes = await getRandomDevJoke();
       setCharacter("Dev Joke");
@@ -56,7 +50,13 @@ export function JokesDisplay({ query }) {
     return (
       <div className={styles.jokes_content_container}>
         {content.map((joke: any) => {
-          return <ChuckNorrisCard jokeTitle={query} value={joke.value} />;
+          return (
+            <ChuckNorrisCard
+              jokeTitle={query}
+              value={joke.value}
+              key={joke.value}
+            />
+          );
         })}
       </div>
     );
@@ -71,17 +71,9 @@ export function JokesDisplay({ query }) {
               jokeTitle="Developers jokes"
               question={joke[0].question}
               punchline={joke[0].punchline}
+              key={joke[0].question}
             />
           );
-        })}
-      </div>
-    );
-  }
-  if (character == "Dad Joke") {
-    return (
-      <div className={styles.jokes_content_container}>
-        {content.map((joke) => {
-          return <DadJokeCard />;
         })}
       </div>
     );
@@ -90,10 +82,20 @@ export function JokesDisplay({ query }) {
     return (
       <div className={styles.jokes_content_container}>
         {content.map((joke: any) => {
-          return <GeekJokeCard jokeTitle="Geek Jokes" punchline={joke.joke} />;
+          return (
+            <GeekJokeCard
+              jokeTitle="Geek Jokes"
+              punchline={joke.joke}
+              key={joke.joke}
+            />
+          );
         })}
       </div>
     );
   }
-  return <div className={styles.spinner_container}>{isLoading ? <Spinner /> : ""}</div>;
+  return (
+    <div className={styles.spinner_container}>
+      {isLoading ? <Spinner /> : ""}
+    </div>
+  );
 }

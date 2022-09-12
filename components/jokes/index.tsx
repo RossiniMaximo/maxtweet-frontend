@@ -8,11 +8,6 @@ const array = [
     id: 20,
   },
   {
-    trendName: "Dad Jokes",
-    numberOfTweets: 100.123,
-    id: 10,
-  },
-  {
     trendName: "Dev Jokes",
     numberOfTweets: 75.228,
     id: 102,
