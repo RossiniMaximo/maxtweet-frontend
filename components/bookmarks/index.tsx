@@ -7,7 +7,7 @@ import { handleAction } from "lib";
 // Based on the data retrieved by the clicks handlers display the cards
 
 export function BookmarksPage() {
-  const me = useUser();
+  const { me } = useUser();
   return (
     <div className={styles.container}>
       {me?.saves.map((t) => {
