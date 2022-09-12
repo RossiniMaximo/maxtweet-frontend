@@ -9,7 +9,6 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ChuckNorrisCard } from "ui/tweetCard/jokeCard/chuck";
-import { DadJokeCard } from "ui/tweetCard/jokeCard/dadJoke";
 import { DevJokeCard } from "ui/tweetCard/jokeCard/devJoke";
 import { GeekJokeCard } from "ui/tweetCard/jokeCard/geekJoke";
 import styles from "./jokesDisplay.module.css";
