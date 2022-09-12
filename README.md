@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Docs : 
+¿ Qué es ?
+MaxTweet es un proyecto basado en Twitter creado en React usando Next js, en el cual podemos crearnos un usuario para  enviar tweets, likearlos,retweetearlos , guardarlos y comentarlos.
+ Luego los tweets con los que hayamos interactuado o emitido , apareceran en nuestro perfil en sus respectivas escenas.
+También se puede seguir y dejar de seguir otros usuarios.
+Al seguir usuarios nos suscribimos su contenido  a nuestro feed, es decir , cada vez que el usuario seguido emita un tweet , este aparecera en nuestro feed , en la escena Home.
 
-## Getting Started
+Escenas :
+/profile 
+En esta escena tenemos acceso a nuestro perfil de usuario , en el cual podremos ver nuestro tweets , likes , saves y replies. También desde aqui podremos eliminar nuestros tweets.
 
-First, run the development server:
+/profile/[userId]
+En esta escena podremos ver el perfil de los demas usuarios de la app. Tendremos acceso a todo lo antes mencionado excepto por la opción de  eliminar tweets.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+/edit-profile
+Escena en las cual se nos permite modificar nuestros datos de usuario. Luego de el login se nos  redirijira a esta página para que elijamos una foto de perfil y una de portada.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+/home
+Escena principal en la cual se muestra el feed del usuario , las sugerencias de seguimiento y la posibilidad de leer algunas bromas.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+/jokes
+Divertite leyendo algunos chistes! Ojo con los de Chuck Norris que son un poco elevados de tono.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+/bookmarks
+En esta escena podremos inspeccionar los tweets que hayamos guardado.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+/explore 
+En esta escena se producen las busquedas. Estas pueden ser filtradas por 5 formas de busqueda. La primera es buscar simplemente desde la barra de busqueda y se nos devolveran usuarios que coincidan con los caracteres ingresados.
+La segunda es filtrar por "Top" , esto filtrara los resultados por usuario con mayor cantidad de followers/seguidos.
+La tercer opción es "Latest" lo que filtrara los resultados por orden de emisión , es decir, nos devolvera los tweets mas recientes.
+La cuarta opción es "People" , esta nos devolvera usuarios aleatorios.
+La ultima opción es "Media", esta opción nos devolvera los tweets que posean algun archivo media en ellos. 
 
-## Learn More
+/login
+Escena para realizar el proceso de autorización.
 
-To learn more about Next.js, take a look at the following resources:
+Backend : 
+Para el backend utilice las API routes de Next js  separando el proyecto en diferentes carpetas como controllers,models,lib,pages. Hice uso de librerias como JWT para el proceso de autorización , uso de middleware para comprobar autorización de parte del usuario.
+Utilice Firestore como base de datos junto a Firebase Storage para almacenar las imagenes de los usuarios.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+API routes : 
+/auth
+Contiene los endpoints relacionados a la identificación del usuario contra la base de datos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+/auth/token
+Endpoint que recibe el código obtenido del endpoint /auth y chequea en la base de datos si es correcto.
 
-## Deploy on Vercel
+/tweet
+Contiene endpoints relacionados a la creación , actualización , obtención y borrado de tweets.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/tweet/all
+Contiene el endpoint para obtener todos los tweets.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+/tweet/get/latest
+Contiene endpoint para obtener los tweets mas recientes.
+
+/tweet/get/media
+Contiene endpoint para obtener los tweets que tengan un archivo media.
+
+/tweet/comments
+Contiene endpoint para crear nuevo comentario.
+
+/tweet/comments/likes
+Contiene endpoints para likear o deslikear comentarios.
+
+/tweet/actions
+acción de tweet = like,retweet,save,comment.
+
+Contiene los endpoints que se encargan  de agregar (POST) una acción de tweet  o por el contrario remover acción de tweet.
+
+/user
+Contiene POST y DELETE para seguir o dejar de seguir usuario , por el otro lado también contiene PATCH para actualizar credenciales de usuario y GET para obtener el documento del usuario  de la base de datos.
+
+/user/all
+Contiene endpoint para leer todos los usuarios.
+
+/user/suggestFollow
+Contiene endpoint para recibir usuarios de sugerencia en la escena Home.
+
+/profile/[userId]
+Obtiene el perfil de un usuario mediante su userId.
+
+/user/get/random
+Obtiene diez usuarios aleatorios de la base  de datos.
+
+/user/get/top
+Obtiene los usuarios mas seguidos de la base de datos.
+
+/user/feed
+Obtiene el feed del usuario.
