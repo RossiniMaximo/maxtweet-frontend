@@ -13,10 +13,9 @@ import { useOthersProfile, useUser } from "lib/hooks";
 export function BottomProfileSection({ userId }) {
   const [content, setContent] = useState([{}] as any);
   const [isLiked, setLiked] = useState(false);
-  const [isRetweeted, setRetweeted] = useState(false);
-  const [isSaved, setSaved] = useState(false);
+
   const data = useOthersProfile(userId);
-  const me = useUser();
+
   function pullTweets() {
     setContent(data.tweets);
   }
@@ -91,11 +90,11 @@ export function BottomProfileSection({ userId }) {
                 key={element.id}
                 text={element.comment}
                 profilePicture={data.pics.profilePicture}
-                userName={me.fullname}
+                userName={data.fullname}
                 likes={element.likes}
                 createdAt={updatedDate.toDateString()}
                 id={element.id}
-                userId={me.generatedId}
+                userId={data.generatedId}
                 onActionClick={async () => {
                   setLiked(!isLiked);
                   isLiked
