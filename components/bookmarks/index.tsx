@@ -11,7 +11,6 @@ export function BookmarksPage() {
   return (
     <div className={styles.container}>
       {me?.saves.map((t) => {
-        console.log(t);
 
         if (Object.keys(t).length !== 0) {
           const savedDate = t.createdAt;

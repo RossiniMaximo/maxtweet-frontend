@@ -1,7 +1,6 @@
 import { LoginComp } from "components/loginComp";
 import Head from "next/head";
 const loginBackgroundImg = require("/public/login_background.jpg");
-console.log(loginBackgroundImg);
 import styles from "./login.module.css";
 
 export default function LoginPage() {

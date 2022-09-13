@@ -14,7 +14,6 @@ export function MyBottomProfileSection() {
   const [myTweets, setMyTweets] = useState([{}]);
   const [isLiked, setLiked] = useState(false);
   const { me, mutate } = useUser();
-  console.log(me);
 
   //  Cambio el contenido de la pagina al tocar likes ,saves ,replies , ejecutando las siguiente funciones
   // en sus respectivos onClick para cambiar el estado , por lo tanto cambiando lo que se muestra
@@ -61,7 +60,6 @@ export function MyBottomProfileSection() {
       />
       <div className={styles.card_container}>
         {myTweets.map((tweet: any) => {
-          console.log(tweet);
 
           if (tweet.info != undefined && tweet.content) {
             const updatedDate = new Date(

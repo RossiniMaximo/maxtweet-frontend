@@ -53,7 +53,7 @@ export function TweetCard(props: TweetCardProps) {
   const router = useRouter();
   const { me } = useUser();
   const { data, mutate } = useUserFeed() as any;
-  console.log(props);
+
 
   const style = isDeleted ? { display: "none" } : {};
 

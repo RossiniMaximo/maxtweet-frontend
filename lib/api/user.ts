@@ -81,7 +81,6 @@ export async function postTweet(newTweet) {
     });
     return json;
   } else {
-    console.log(true);
     const json = await fetchAPI("/tweet", {
       method: "POST",
       body: {

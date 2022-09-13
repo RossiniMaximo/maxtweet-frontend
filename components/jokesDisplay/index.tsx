@@ -35,7 +35,6 @@ export function JokesDisplay({ query }) {
     }
     if (query == " Geek Jokes") {
       const jokes = await getRandomGeekJoke();
-      console.log(jokes);
 
       setCharacter("Geek Joke");
       setContent(jokes);

@@ -16,7 +16,6 @@ import { useOthersProfile } from "lib/hooks";
 export function OthersProfileTop({ userId }) {
   const [following, setFollowing] = useState(false);
   const userData = useOthersProfile(userId);
-  console.log(userData);
 
   async function followButtonListener() {
     if (following) {
@@ -27,7 +26,6 @@ export function OthersProfileTop({ userId }) {
       await handleFollow(userId);
     }
   }
-  console.log(userData);
 
   return (
     <div className={styles.main_container}>
