@@ -1,6 +1,6 @@
 import { handleDeleteTweetAction, handleTweetAction } from "./api/user";
 
-const DEV_URL = "http://localhost:5500/api";
+const DEV_URL = "http://localhost:8080/api";
 const PROD_URL = process.env.NEXT_PUBLIC_DATABASE_URL || "";
 
 export async function fetchAPI(input: RequestInfo, init?: RequestInit | {}) {
@@ -14,7 +14,7 @@ export async function fetchAPI(input: RequestInfo, init?: RequestInit | {}) {
     newInit.headers["Content-Type"] = "application/json";
     newInit.body = JSON.stringify(newInit.body);
   }
-  const res = await fetch(PROD_URL + input, newInit);
+  const res = await fetch(DEV_URL + input, newInit);
   if (res.status >= 200 && res.status < 300) {
     const json = await res.json();
     return json;

@@ -1,13 +1,10 @@
 import { TweetCard } from "ui/tweetCard/tweetCard";
 import styles from "./showfeed.module.css";
-import { useUserFeed, useUser } from "lib/hooks";
+import { useUserFeed } from "lib/hooks";
 import { handleAction } from "lib";
-import { useState } from "react";
 import { Spinner } from "components/spinner";
 
 export function ShowFeed() {
-  const [isLoading, setIsLoading] = useState(false);
-  const { me } = useUser();
   const { data } = useUserFeed() as any;
   if (!data) {
     return (
@@ -19,7 +16,6 @@ export function ShowFeed() {
   if (data != "error in fetchAPI" && data != "undefined") {
     return (
       <div>
-        {isLoading ? <Spinner /> : " "}
         {data?.map((t) => {
           if (Object.keys(t).length !== 0) {
             const savedDate = t.createdAt;
@@ -42,7 +38,7 @@ export function ShowFeed() {
                   userName={t.userName}
                   onActionClick={handleAction}
                   replies={t.comments}
-                  userId={me?.generatedId}
+                  userId={t.userId}
                   isRemoved={() => {}}
                 />
               </div>

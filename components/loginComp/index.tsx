@@ -5,8 +5,6 @@ import { getCode, sendCode } from "lib/api/auth";
 import { setLoggedInStorage } from "lib/index";
 import Router from "next/router";
 import { AlertComponent } from "components/alert";
-console.log("1", process.env.DATABASE_URL);
-console.log("2", process.env.NEXT_PUBLIC_DATABASE_URL);
 export function LoginComp() {
   const [email, setEmail] = useState("");
   const [isSent, setIsSent] = useState(false);

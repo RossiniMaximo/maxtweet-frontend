@@ -238,6 +238,10 @@ export function TweetCard(props: TweetCardProps) {
         ""
       )}
       {isActive ? (
+        /* PROBAR SI EN BUILD + START TAMBIEN PASA LO DE QUE NO SE 
+          MANDA EL COMENTARIO 
+        */
+
         <div>
           {props.replies?.map((r: any) => {
             const updatedDate = new Date(
