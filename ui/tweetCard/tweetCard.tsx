@@ -46,13 +46,14 @@ export function TweetCard(props: TweetCardProps) {
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [isProfile, setIsProfile] = useState(false);
+  const [isMine, setIsMine] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [isDeleted, setIsDeleted] = useState(false);
   const router = useRouter();
   const { me } = useUser();
   const { data, mutate } = useUserFeed() as any;
+  console.log(props);
 
   const style = isDeleted ? { display: "none" } : {};
 
@@ -76,10 +77,10 @@ export function TweetCard(props: TweetCardProps) {
 
   useEffect(() => {
     setLikeCount(props.likes);
-    if (router.route == "/profile") {
-      setIsProfile(true);
+    if (props.userId == me.generatedId) {
+      setIsMine(true);
     } else {
-      setIsProfile(false);
+      setIsMine(false);
     }
   }, [router]);
 
@@ -103,7 +104,7 @@ export function TweetCard(props: TweetCardProps) {
           </RegularBlackSmallTextBold>
           <RegularGrayTextSmall>{props.createdAt}</RegularGrayTextSmall>
         </div>
-        {isProfile ? (
+        {isMine ? (
           <div
             className={styles.delete_icon}
             onClick={async () => {
