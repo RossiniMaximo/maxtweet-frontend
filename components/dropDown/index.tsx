@@ -28,7 +28,7 @@ export function DropwDown() {
         <p
           className={styles.logout_item}
           onClick={() => {
-            logOut;
+            logOut();
             router.push("/home");
           }}
         >
