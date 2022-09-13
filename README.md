@@ -88,3 +88,9 @@ Obtiene los usuarios mas seguidos de la base de datos.
 
 /user/feed
 Obtiene el feed del usuario.
+
+URL DE LA PAGE : 
+https://maxtweet-frontend.vercel.app/home
+
+URL DEL REPO DEL BACK : 
+https://github.com/RossiniMaximo/maxtweet-backend
