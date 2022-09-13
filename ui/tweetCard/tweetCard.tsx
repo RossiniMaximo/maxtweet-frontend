@@ -77,7 +77,7 @@ export function TweetCard(props: TweetCardProps) {
 
   useEffect(() => {
     setLikeCount(props.likes);
-    if (props.userId == me.generatedId) {
+    if (props.userId == me?.generatedId) {
       setIsMine(true);
     } else {
       setIsMine(false);
