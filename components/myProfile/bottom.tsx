@@ -60,6 +60,8 @@ export function MyBottomProfileSection() {
       />
       <div className={styles.card_container}>
         {myTweets.map((tweet: any) => {
+          console.log(tweet);
+
           if (tweet.info != undefined && tweet.content) {
             const updatedDate = new Date(
               tweet.createdAt?._seconds * 1000 +
@@ -70,17 +72,17 @@ export function MyBottomProfileSection() {
               <TweetCard
                 key={tweet.id}
                 text={tweet.content}
-                userName={me?.fullname}
+                userName={tweet.userName}
                 likes={tweet.info[0].likes}
                 src={tweet.img}
-                profilePicture={me?.pics.profilePicture}
+                profilePicture={tweet.profilePicture}
                 retweets={tweet.info[0].retweets}
                 saves={tweet.info[0].saves}
                 comments={tweet.info[0].comments}
                 createdAt={updatedDate.toDateString()}
                 replies={tweet.comments}
                 id={tweet.id}
-                userId={me?.generatedId}
+                userId={tweet.userId}
                 onActionClick={async (action, tweetId, remove) => {
                   if (remove) {
                     await handleDeleteTweetAction(action, tweetId);

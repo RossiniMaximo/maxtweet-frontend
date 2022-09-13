@@ -25,7 +25,13 @@ export function DropwDown() {
         </li>
       </ul>
       <div className={styles.menu_logout}>
-        <p className={styles.logout_item} onClick={logOut}>
+        <p
+          className={styles.logout_item}
+          onClick={() => {
+            logOut;
+            router.push("/home");
+          }}
+        >
           <RiLogoutBoxRLine size="25" />
           Logout
         </p>
